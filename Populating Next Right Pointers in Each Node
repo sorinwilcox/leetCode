@@ -1,0 +1,28 @@
+let connect = function(root) {
+
+    // Check root = null
+    if(!root){
+        return root;
+    }
+    // make var to store root
+    let level = root;
+    // Each level will run while loop while level != null
+    while(level.left){
+        let head = level;
+        //Check head to see if equals null
+        while(head != null){
+            //this will set pointer from left to right
+            head.left.next = head.right;
+            //Check is the head and move the pointer from the
+            // right up a level and to the left  back down 
+            if(head.next) {
+                head.right.next = head.next.left;
+            }
+            //Checking the head to see if = null to check level
+            head = head.next
+        }
+        //This will move forward from a level
+        level = level.left
+    }
+    return root;
+};
